@@ -35,12 +35,14 @@ This project showcases both the **customer-facing site** and the **admin dashboa
 ## 🖼️ Preview
 
 ### 🌍 Frontend
-![Coffee Blend Frontend](screenshots/frontend-home.png)
+![Coffee Blend Frontend]<img width="1877" height="825" alt="image" src="https://github.com/user-attachments/assets/89cb562b-9356-4a42-92c2-6ec11258c7c2" />
+
 
 ### ⚙️ Admin Panel
-![Coffee Blend Admin](screenshots/admin-dashboard.png)
+![Coffee Blend Admin]<img width="1903" height="818" alt="image" src="https://github.com/user-attachments/assets/4f0f49ea-f756-4632-b5fd-2884bcb814e1" />
 
-*(Replace with actual screenshots from your project)*
+
+
 
 ---
 
