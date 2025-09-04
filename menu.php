@@ -26,7 +26,7 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 
 				<div class="col-md-7 col-sm-12 text-center ftco-animate">
 					<h1 class="mb-3 mt-5 bread">Our Menu</h1>
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Menu</span></p>
+					<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Menu</span></p>
 				</div>
 
 			</div>
@@ -94,9 +94,15 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 						<div class="form-group">
 							<textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 						</div>
+						<?php if(isset($_SESSION['user_id'])): ?>
 						<div class="form-group ml-md-4">
 							<input name="submit" type="submit" value="Book a Table" class="btn btn-white py-3 px-4">
 						</div>
+						<?php else: ?>
+							<div class="form-group ml-md-4">
+								<a href="login.php" class="btn btn-white py-3 px-4">Login to Book</a>
+							</div>
+						<?php endif; ?>
 					</div>
 				</form>
 			</div>
@@ -113,7 +119,7 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 				<h3 class="mb-5 heading-pricing ftco-animate">Desserts</h3>
 				<?php foreach($allDesserts as $dessert) : ?>
 				<div class="pricing-entry d-flex ftco-animate">
-					<div class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $dessert->image; ?>);"></div>
+					<div class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $dessert->image; ?>);"></div>
 					<div class="desc pl-3">
 						<div class="d-flex text align-items-center">
 							<h3><span><?php echo $dessert->name; ?></span></h3>
@@ -131,7 +137,7 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 				<h3 class="mb-5 heading-pricing ftco-animate">Drinks</h3>
 				<?php foreach($allDrinks as $drink) : ?>
 				<div class="pricing-entry d-flex ftco-animate">
-					<div class="img" style="background-image: url(images/<?php echo $drink->image; ?> );"></div>
+					<div class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $drink->image; ?> );"></div>
 					<div class="desc pl-3">
 						<div class="d-flex text align-items-center">
 							<h3><span><?php echo $drink->name; ?></span></h3>
@@ -179,7 +185,7 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 									<?php foreach($allDrinks as $drink) : ?>
 									<div class="col-md-4 text-center">
 										<div class="menu-wrap">
-											<a href="products/product-single.php?id=<?php echo $drink->id; ?>" class="menu-img img mb-4" style="background-image: url(images/<?php echo $drink->image; ?>);"></a>
+											<a href="products/product-single.php?id=<?php echo $drink->id; ?>" class="menu-img img mb-4" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $drink->image; ?>);"></a>
 											<div class="text">
 												<h3><a href="products/product-single.php?id=<?php echo $drink->id; ?>"><?php echo $drink->name; ?></a></h3>
 												<p><?php echo $drink->description; ?></p>
@@ -197,7 +203,7 @@ $allDrinks = $drinks->fetchAll(PDO::FETCH_OBJ);
 									<?php foreach($allDesserts as $dessert) : ?>
 									<div class="col-md-4 text-center">
 										<div class="menu-wrap">
-											<a href="products/product-single.php?id=<?php echo $dessert->id; ?>" class="menu-img img mb-4" style="background-image: url(images/<?php echo $dessert->image; ?>);"></a>
+											<a href="products/product-single.php?id=<?php echo $dessert->id; ?>" class="menu-img img mb-4" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $dessert->image; ?>);"></a>
 											<div class="text">
 												<h3><a href="products/product-single.php?id=<?php echo $dessert->id; ?>"><?php echo $dessert->name; ?></a></h3>
 												<p><?php echo $dessert->description; ?></p>

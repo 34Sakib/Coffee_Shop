@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 mb-5 ftco-animate">
-				<a href="images/menu-2.jpg" class="image-popup"><img src="<?php echo APPURL; ?>/images/<?php echo $singleProduct->image; ?>" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="images/menu-2.jpg" class="image-popup"><img src="<?php echo IMAGEPRODUCTS; ?>/<?php echo $singleProduct->image; ?>" class="img-fluid" alt="Colorlib Template"></a>
 			</div>
 			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 				<h3><?php echo $singleProduct->name; ?></h3>
@@ -131,7 +131,7 @@ if (isset($_GET['id'])) {
 					<?php if ($rowCount > 0): ?>
 						<button name="submit" type="submit" class="btn btn-primary py-3 px-5" disabled>Added to Cart</button>
 					<?php else: ?>
-						<button name="submit" type="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
+						<button name="submit" type="submit" class="btn btn-primary py-3 px-5" >Add to Cart</button>
 					<?php endif; ?>
 					<?php else: ?>
 						<p>Please <a href="<?php echo APPURL; ?>/auth/login.php">login</a> to add to cart</p>
@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
 			<?php foreach ($allReatedProducts as $allrelatedProduct) : ?>
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $allrelatedProduct->id; ?>" class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $allrelatedProduct->image; ?>);"></a>
+						<a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $allrelatedProduct->id; ?>" class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $allrelatedProduct->image; ?>);"></a>
 						<div class="text text-center pt-4">
 							<h3><a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $allrelatedProduct->id; ?>"><?php echo $allrelatedProduct->name; ?></a></h3>
 							<p><?php echo $allrelatedProduct->description; ?></p>

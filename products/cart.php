@@ -66,7 +66,7 @@ if (isset($_POST['checkout'])) {
 										<td class="product-remove"><a href="delete-product.php?id=<?php echo $product->id; ?>"><span class="icon-close"></span></a></td>
 
 										<td class="image-prod">
-											<div class="img" style="background-image:url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>);"></div>
+											<div class="img" style="background-image:url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $product->image; ?>);"></div>
 										</td>
 
 										<td class="product-name">
@@ -120,9 +120,9 @@ if (isset($_POST['checkout'])) {
 					</p>
 				</div>
 				<form action="cart.php" method="post">
-					<input type="text" name="total_price" value="<?php echo $allCartTotal->total + 10 - 3; ?>" hidden>
+					<input name="total_price" value="<?php echo $allCartTotal->total + 10 - 3; ?>" hidden>
 					<?php if (isset($allCartTotal) && $allCartTotal->total > 0): ?>
-						<button name="checkout" type="submit" class="btn btn-primary py-3 px-4">Proceed to Checkout</button>
+						<button name="checkout" type="submit" class="btn btn-primary py-3 px-4" style="background-color:black">Proceed to Checkout</button>
 					<?php endif; ?>
 				</form>
 			</div>

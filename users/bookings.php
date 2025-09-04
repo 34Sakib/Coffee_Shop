@@ -46,6 +46,7 @@ if (!isset($_SESSION['user_id'])) {
 									<th>Phone</th>
 									<th>Message</th>
                                     <th>Status</th>
+									<th>Write Review</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -69,6 +70,11 @@ if (!isset($_SESSION['user_id'])) {
                                         </td>
                                         <td class="status"><?php echo $bookings->status; ?>
                                         </td>
+										<?php if($bookings->status == "Done"): ?>
+										<td class="review">
+											<a href="<?php echo APPURL; ?>/reviews/write-review.php" class="btn btn-primary">Write Review</a>
+										</td>
+										<?php endif; ?>
 									</tr>
 								<?php endforeach; ?>
 

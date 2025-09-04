@@ -8,6 +8,12 @@ $products->execute();
 
 // Fetch as objects instead of associative arrays
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
+
+$reviews = $conn->query("SELECT * FROM reviews");
+$reviews->execute();
+
+// Fetch as objects instead of associative arrays
+$allReviews = $reviews->fetchAll(PDO::FETCH_OBJ);
 ?>
 <section class="home-slider owl-carousel">
 	<div class="slider-item" style="background-image: url(images/bg_1.jpg);">
@@ -119,9 +125,15 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 						<div class="form-group">
 							<textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 						</div>
+						<?php if(isset($_SESSION['user_id'])): ?>
 						<div class="form-group ml-md-4">
 							<button type="submit" name="submit" class="btn btn-white py-3 px-4">Book a Table</button>
 						</div>
+						<?php else: ?>
+							<div class="form-group ml-md-4">
+								<a href="login.php" class="btn btn-white py-3 px-4">Login to Book</a>
+							</div>
+						<?php endif; ?>
 					</div>
 				</form>
 			</div>
@@ -284,11 +296,11 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 			<?php foreach ($allProducts as $prodcut): ?>
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a target="_blank" href="products/product-single.php?id=<?php echo $prodcut->id; ?>" class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $prodcut->image; ?>);"></a>
+						<a target="_blank" href="products/product-single.php?id=<?php echo $prodcut->id; ?>" class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $prodcut->image; ?>);"></a>
 						<div class="text text-center pt-4">
 							<h3><a href="#"><?php echo $prodcut->name; ?></a></h3>
 							<p><?php echo $prodcut->description; ?></p>
-							<p class="price"><span><?php echo $prodcut->price; ?></span></p>
+							<p class="price">$<span><?php echo $prodcut->price; ?></span></p>
 							<p><a target="_blank" href="products/product-single.php?id=<?php echo $prodcut->id; ?>" class="btn btn-primary btn-outline-primary">Show</a></p>
 						</div>
 					</div>
@@ -349,71 +361,18 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 	</div>
 	<div class="container-wrap">
 		<div class="row d-flex no-gutters">
-			<div class="col-lg align-self-sm-end ftco-animate">
+			<?php foreach ($allReviews as $review): ?>
+			<div class="col-md-3 align-self-sm-end ftco-animate">
 				<div class="testimony">
 					<blockquote>
-						<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small.&rdquo;</p>
+						<p>&ldquo;<?php echo $review->review; ?>.&rdquo;</p>
 					</blockquote>
 					<div class="author d-flex mt-4">
-						<div class="image mr-3 align-self-center">
-							<img src="images/person_2.jpg" alt="">
-						</div>
-						<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+						<div class="name align-self-center"><?php echo $review->username; ?></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg align-self-sm-end">
-				<div class="testimony overlay">
-					<blockquote>
-						<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
-					</blockquote>
-					<div class="author d-flex mt-4">
-						<div class="image mr-3 align-self-center">
-							<img src="images/person_2.jpg" alt="">
-						</div>
-						<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg align-self-sm-end ftco-animate">
-				<div class="testimony">
-					<blockquote>
-						<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
-					</blockquote>
-					<div class="author d-flex mt-4">
-						<div class="image mr-3 align-self-center">
-							<img src="images/person_3.jpg" alt="">
-						</div>
-						<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg align-self-sm-end">
-				<div class="testimony overlay">
-					<blockquote>
-						<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however.&rdquo;</p>
-					</blockquote>
-					<div class="author d-flex mt-4">
-						<div class="image mr-3 align-self-center">
-							<img src="images/person_2.jpg" alt="">
-						</div>
-						<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg align-self-sm-end ftco-animate">
-				<div class="testimony">
-					<blockquote>
-						<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
-					</blockquote>
-					<div class="author d-flex mt-4">
-						<div class="image mr-3 align-self-center">
-							<img src="images/person_3.jpg" alt="">
-						</div>
-						<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
-					</div>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
